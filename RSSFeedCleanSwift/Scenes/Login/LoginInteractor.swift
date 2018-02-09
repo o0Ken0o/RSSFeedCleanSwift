@@ -14,12 +14,12 @@ protocol LoginBusinessLogic {
 
 class LoginInteractor {
     var presenter: LoginPresentationLogic?
-    var accountService: AccountServiceProtocol?
+    var accountService: AccountServiceProtocol! = ServicesHolder.accountService
 }
 
 extension LoginInteractor: LoginBusinessLogic {
     func tryLogin(request: Login.TryLogin.Request) {
-        accountService?.trying2LoginIn(username: request.username, password: request.password) { [unowned self] (isSuccessful, errorMsg) in
+        accountService.trying2LoginIn(username: request.username, password: request.password) { [unowned self] (isSuccessful, errorMsg) in
             if isSuccessful {
                 // store token locally
                 
