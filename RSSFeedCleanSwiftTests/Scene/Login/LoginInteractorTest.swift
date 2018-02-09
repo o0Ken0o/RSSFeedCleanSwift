@@ -34,7 +34,7 @@ class LoginInteractorTest: XCTestCase {
         sut.accountService = AccountServiceStub()
         
         sut.tryLogin(request: Login.TryLogin.Request(username: nil, password: nil))
-        XCTAssert(loginPresentationLogicSpy.presentLoginResponseCalled)
+        XCTAssert(loginPresentationLogicSpy.presentLoginResponseCalled, "Trying to sign in should call presenter to present the login response")
     }
     
     class LoginPresentationLogicSpy: LoginPresentationLogic {

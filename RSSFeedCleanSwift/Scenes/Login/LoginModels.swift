@@ -20,9 +20,13 @@ enum Login {
             var errorMsg: String?
         }
         
-        struct ViewModel {
+        struct ViewModel: Equatable {
             var isSuccessful: Bool
             var errorMsg: String
+            
+            static func ==(lhs: ViewModel, rhs: ViewModel) -> Bool {
+                return lhs.isSuccessful == rhs.isSuccessful && lhs.errorMsg == rhs.errorMsg
+            }
         }
     }
 }
