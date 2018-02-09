@@ -7,3 +7,20 @@
 //
 
 import Foundation
+
+enum Login {
+    enum TryLogin {
+        struct Request {
+            var username: String?
+            var password: String?
+        }
+        
+        struct Response {
+            
+        }
+        
+        struct ViewModel {
+            
+        }
+    }
+}
