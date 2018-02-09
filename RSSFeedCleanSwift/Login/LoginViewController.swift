@@ -18,9 +18,21 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "Login"
         self.view.backgroundColor = .white
+        setupVIPChain()
+    }
+    
+    private func setupVIPChain() {
+        let viewController = self
+        let interactor = LoginInteractor()
+        let presenter = LoginPresenter()
+        let router = LoginRouter()
+        
+        viewController.router = router
+        viewController.interactor = interactor
+        interactor.presenter = presenter
+        presenter.viewController = viewController
     }
 }
 
