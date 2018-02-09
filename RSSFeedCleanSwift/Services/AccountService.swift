@@ -1,5 +1,5 @@
-    //
-//  LoginInteractor.swift
+//
+//  AccountService.swift
 //  RSSFeedCleanSwift
 //
 //  Created by Ken Siu on 9/2/2018.
@@ -8,13 +8,14 @@
 
 import Foundation
 
-protocol LoginBusinessLogic {
-    func tryLogin(request: Login.TryLogin.Request)
+/**
+ services related to login, sign up, changing pw, sign up using facebook, sign up using goolge are included in Account AccountServiceProtocol
+**/
+protocol AccountServiceProtocol {
+    func trying2LoginIn(username: String?, password: String?, completion: @escaping (Bool, String?) -> Void)
 }
 
-class LoginInteractor {
-    var presenter: LoginPresentationLogic?
-    
+class AccountService: AccountServiceProtocol {
     func trying2LoginIn(username: String?, password: String?, completion: @escaping (Bool, String?) -> Void) {
         guard let username = username, let password = password else {
             // needs to call completion in main thread
@@ -35,19 +36,6 @@ class LoginInteractor {
             }
         } else {
             completion(false, "No such user")
-        }
-    }
-}
-
-extension LoginInteractor: LoginBusinessLogic {
-    func tryLogin(request: Login.TryLogin.Request) {
-        trying2LoginIn(username: request.username, password: request.password) { [unowned self] (isSuccessful, errorMsg) in
-            if isSuccessful {
-                // store token locally
-                
-            }
-            
-            self.presenter?.presentLoginResponse(response: Login.TryLogin.Response(isSuccessful: isSuccessful, errorMsg: errorMsg))
         }
     }
 }

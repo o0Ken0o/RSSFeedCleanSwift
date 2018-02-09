@@ -13,6 +13,10 @@ enum Login {
         struct Request {
             var username: String?
             var password: String?
+            
+            static func ==(lhs: Request, rhs: Request) -> Bool {
+                return lhs.username == rhs.username && lhs.password == rhs.password
+            }
         }
         
         struct Response {
@@ -20,9 +24,13 @@ enum Login {
             var errorMsg: String?
         }
         
-        struct ViewModel {
+        struct ViewModel: Equatable {
             var isSuccessful: Bool
             var errorMsg: String
+            
+            static func ==(lhs: ViewModel, rhs: ViewModel) -> Bool {
+                return lhs.isSuccessful == rhs.isSuccessful && lhs.errorMsg == rhs.errorMsg
+            }
         }
     }
 }
