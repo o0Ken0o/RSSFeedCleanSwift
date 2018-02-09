@@ -13,6 +13,10 @@ enum Login {
         struct Request {
             var username: String?
             var password: String?
+            
+            static func ==(lhs: Request, rhs: Request) -> Bool {
+                return lhs.username == rhs.username && lhs.password == rhs.password
+            }
         }
         
         struct Response {
