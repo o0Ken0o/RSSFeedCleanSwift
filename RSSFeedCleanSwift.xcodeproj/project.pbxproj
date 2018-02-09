@@ -16,6 +16,8 @@
 		0599432C202D422500CC314D /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599432B202D422500CC314D /* LoginPresenter.swift */; };
 		0599432E202D425300CC314D /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599432D202D425300CC314D /* LoginRouter.swift */; };
 		05994330202D43A600CC314D /* LoginModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599432F202D43A600CC314D /* LoginModels.swift */; };
+		A7E7F58AD87D3EEA51AAF310 /* Pods_RSSFeedCleanSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBF7D0E5DCE96410BFD3A2A /* Pods_RSSFeedCleanSwift.framework */; };
+		F65352768187D4545876DA99 /* Pods_RSSFeedCleanSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FE8D3BECE20B29A2B81055 /* Pods_RSSFeedCleanSwiftTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,12 @@
 		0599432B202D422500CC314D /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
 		0599432D202D425300CC314D /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
 		0599432F202D43A600CC314D /* LoginModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModels.swift; sourceTree = "<group>"; };
+		345B793572EDEEFE230104B5 /* Pods-RSSFeedCleanSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeedCleanSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSSFeedCleanSwift/Pods-RSSFeedCleanSwift.release.xcconfig"; sourceTree = "<group>"; };
+		3F5618B3CFF07ECB83F5DC18 /* Pods-RSSFeedCleanSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeedCleanSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSSFeedCleanSwift/Pods-RSSFeedCleanSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		B693F7C88BCF7DC8358A95EE /* Pods-RSSFeedCleanSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeedCleanSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSSFeedCleanSwiftTests/Pods-RSSFeedCleanSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
+		C0297280C1A798BFDCBD32C2 /* Pods-RSSFeedCleanSwiftTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeedCleanSwiftTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSSFeedCleanSwiftTests/Pods-RSSFeedCleanSwiftTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DCBF7D0E5DCE96410BFD3A2A /* Pods_RSSFeedCleanSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSSFeedCleanSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8FE8D3BECE20B29A2B81055 /* Pods_RSSFeedCleanSwiftTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSSFeedCleanSwiftTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7E7F58AD87D3EEA51AAF310 /* Pods_RSSFeedCleanSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F65352768187D4545876DA99 /* Pods_RSSFeedCleanSwiftTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +78,8 @@
 				059942F6202C586700CC314D /* RSSFeedCleanSwift */,
 				0599430B202C586700CC314D /* RSSFeedCleanSwiftTests */,
 				059942F5202C586700CC314D /* Products */,
+				68F7170797BE745CCA4D5CCB /* Pods */,
+				A79AFF1D7E1B8EE50F8A626E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,6 +125,26 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		68F7170797BE745CCA4D5CCB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3F5618B3CFF07ECB83F5DC18 /* Pods-RSSFeedCleanSwift.debug.xcconfig */,
+				345B793572EDEEFE230104B5 /* Pods-RSSFeedCleanSwift.release.xcconfig */,
+				C0297280C1A798BFDCBD32C2 /* Pods-RSSFeedCleanSwiftTests.debug.xcconfig */,
+				B693F7C88BCF7DC8358A95EE /* Pods-RSSFeedCleanSwiftTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A79AFF1D7E1B8EE50F8A626E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DCBF7D0E5DCE96410BFD3A2A /* Pods_RSSFeedCleanSwift.framework */,
+				F8FE8D3BECE20B29A2B81055 /* Pods_RSSFeedCleanSwiftTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -120,9 +152,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05994311202C586700CC314D /* Build configuration list for PBXNativeTarget "RSSFeedCleanSwift" */;
 			buildPhases = (
+				CB3100AE616C6DA24C08651A /* [CP] Check Pods Manifest.lock */,
 				059942F0202C586700CC314D /* Sources */,
 				059942F1202C586700CC314D /* Frameworks */,
 				059942F2202C586700CC314D /* Resources */,
+				9EFA9E0CF1002CECCD663B0C /* [CP] Embed Pods Frameworks */,
+				44D31464E449CC62CD31966D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -137,9 +172,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 05994314202C586700CC314D /* Build configuration list for PBXNativeTarget "RSSFeedCleanSwiftTests" */;
 			buildPhases = (
+				7606CEB08979BA4DEB3F0DAF /* [CP] Check Pods Manifest.lock */,
 				05994304202C586700CC314D /* Sources */,
 				05994305202C586700CC314D /* Frameworks */,
 				05994306202C586700CC314D /* Resources */,
+				B9FDF06CBEC4845C601D1020 /* [CP] Embed Pods Frameworks */,
+				72FEEA9F545DB66474656B60 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,6 +247,108 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		44D31464E449CC62CD31966D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RSSFeedCleanSwift/Pods-RSSFeedCleanSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72FEEA9F545DB66474656B60 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RSSFeedCleanSwiftTests/Pods-RSSFeedCleanSwiftTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7606CEB08979BA4DEB3F0DAF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RSSFeedCleanSwiftTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9EFA9E0CF1002CECCD663B0C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RSSFeedCleanSwift/Pods-RSSFeedCleanSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RSSFeedCleanSwift/Pods-RSSFeedCleanSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9FDF06CBEC4845C601D1020 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RSSFeedCleanSwiftTests/Pods-RSSFeedCleanSwiftTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CB3100AE616C6DA24C08651A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RSSFeedCleanSwift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		059942F0202C586700CC314D /* Sources */ = {
@@ -363,6 +503,7 @@
 		};
 		05994312202C586700CC314D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F5618B3CFF07ECB83F5DC18 /* Pods-RSSFeedCleanSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -378,6 +519,7 @@
 		};
 		05994313202C586700CC314D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 345B793572EDEEFE230104B5 /* Pods-RSSFeedCleanSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -393,6 +535,7 @@
 		};
 		05994315202C586700CC314D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0297280C1A798BFDCBD32C2 /* Pods-RSSFeedCleanSwiftTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -410,6 +553,7 @@
 		};
 		05994316202C586700CC314D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B693F7C88BCF7DC8358A95EE /* Pods-RSSFeedCleanSwiftTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
