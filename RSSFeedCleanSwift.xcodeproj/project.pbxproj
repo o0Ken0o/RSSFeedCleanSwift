@@ -22,6 +22,10 @@
 		0599433E202D8A4800CC314D /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599433D202D8A4800CC314D /* AccountService.swift */; };
 		05994340202D95C600CC314D /* LoginPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599433F202D95C600CC314D /* LoginPresenterTest.swift */; };
 		05994342202D9B2A00CC314D /* LoginViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05994341202D9B2A00CC314D /* LoginViewControllerTest.swift */; };
+		05994344202DAB7900CC314D /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05994343202DAB7900CC314D /* HomeInteractor.swift */; };
+		05994346202DAB9F00CC314D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05994345202DAB9F00CC314D /* HomePresenter.swift */; };
+		05994348202DAD9A00CC314D /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05994347202DAD9A00CC314D /* HomeRouter.swift */; };
+		0599434A202DADD600CC314D /* HomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05994349202DADD600CC314D /* HomeModels.swift */; };
 		A7E7F58AD87D3EEA51AAF310 /* Pods_RSSFeedCleanSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCBF7D0E5DCE96410BFD3A2A /* Pods_RSSFeedCleanSwift.framework */; };
 		F65352768187D4545876DA99 /* Pods_RSSFeedCleanSwiftTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FE8D3BECE20B29A2B81055 /* Pods_RSSFeedCleanSwiftTests.framework */; };
 /* End PBXBuildFile section */
@@ -56,6 +60,10 @@
 		0599433D202D8A4800CC314D /* AccountService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		0599433F202D95C600CC314D /* LoginPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenterTest.swift; sourceTree = "<group>"; };
 		05994341202D9B2A00CC314D /* LoginViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTest.swift; sourceTree = "<group>"; };
+		05994343202DAB7900CC314D /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		05994345202DAB9F00CC314D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		05994347202DAD9A00CC314D /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		05994349202DADD600CC314D /* HomeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModels.swift; sourceTree = "<group>"; };
 		345B793572EDEEFE230104B5 /* Pods-RSSFeedCleanSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeedCleanSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSSFeedCleanSwift/Pods-RSSFeedCleanSwift.release.xcconfig"; sourceTree = "<group>"; };
 		3F5618B3CFF07ECB83F5DC18 /* Pods-RSSFeedCleanSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeedCleanSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RSSFeedCleanSwift/Pods-RSSFeedCleanSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		B693F7C88BCF7DC8358A95EE /* Pods-RSSFeedCleanSwiftTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeedCleanSwiftTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RSSFeedCleanSwiftTests/Pods-RSSFeedCleanSwiftTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,6 +169,10 @@
 			isa = PBXGroup;
 			children = (
 				05994334202D7EF400CC314D /* HomeViewController.swift */,
+				05994343202DAB7900CC314D /* HomeInteractor.swift */,
+				05994345202DAB9F00CC314D /* HomePresenter.swift */,
+				05994347202DAD9A00CC314D /* HomeRouter.swift */,
+				05994349202DADD600CC314D /* HomeModels.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -422,14 +434,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0599433E202D8A4800CC314D /* AccountService.swift in Sources */,
+				05994348202DAD9A00CC314D /* HomeRouter.swift in Sources */,
 				0599432A202D41EA00CC314D /* LoginInteractor.swift in Sources */,
 				0599433C202D8A2E00CC314D /* ServicesHolder.swift in Sources */,
+				05994344202DAB7900CC314D /* HomeInteractor.swift in Sources */,
 				05994328202D41AF00CC314D /* LoginViewController.swift in Sources */,
 				05994330202D43A600CC314D /* LoginModels.swift in Sources */,
 				0599432E202D425300CC314D /* LoginRouter.swift in Sources */,
 				059942F8202C586700CC314D /* AppDelegate.swift in Sources */,
 				05994335202D7EF400CC314D /* HomeViewController.swift in Sources */,
 				0599432C202D422500CC314D /* LoginPresenter.swift in Sources */,
+				05994346202DAB9F00CC314D /* HomePresenter.swift in Sources */,
+				0599434A202DADD600CC314D /* HomeModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
