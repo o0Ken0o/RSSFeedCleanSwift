@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 protocol LoginDisplayLogic: class {
-    
+    func displayLogin(viewModel: Login.TryLogin.ViewModel)
 }
 
 class LoginViewController: UIViewController {
@@ -97,10 +97,23 @@ class LoginViewController: UIViewController {
         let password = passwordTF.text
         interactor?.tryLogin(request: Login.TryLogin.Request(username: username, password: password))
     }
+    
+    private func showAlertWith(title: String?, message: String?) {
+        let alertCtrl = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertCtrl.addAction(okAction)
+        self.present(alertCtrl, animated: true)
+    }
 }
 
 extension LoginViewController: LoginDisplayLogic {
-    
+    func displayLogin(viewModel: Login.TryLogin.ViewModel) {
+        if viewModel.isSuccessful {
+            print("Logging the user in")
+        } else {
+            showAlertWith(title: "Error", message: viewModel.errorMsg)
+        }
+    }
 }
 
 

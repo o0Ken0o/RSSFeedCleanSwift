@@ -9,7 +9,7 @@
 import Foundation
 
 protocol LoginPresentationLogic {
-    
+    func presentLoginResponse(response: Login.TryLogin.Response)
 }
 
 class LoginPresenter {
@@ -18,5 +18,10 @@ class LoginPresenter {
 }
 
 extension LoginPresenter: LoginPresentationLogic {
-    
+    func presentLoginResponse(response: Login.TryLogin.Response) {
+        let isSuccessful = response.isSuccessful
+        let errorMsg = response.errorMsg ?? ""
+        let viewModel = Login.TryLogin.ViewModel(isSuccessful: isSuccessful, errorMsg: errorMsg)
+        viewController?.displayLogin(viewModel: viewModel)
+    }
 }

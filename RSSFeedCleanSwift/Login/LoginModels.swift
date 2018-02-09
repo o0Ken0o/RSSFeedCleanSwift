@@ -16,11 +16,13 @@ enum Login {
         }
         
         struct Response {
-            
+            var isSuccessful: Bool
+            var errorMsg: String?
         }
         
         struct ViewModel {
-            
+            var isSuccessful: Bool
+            var errorMsg: String
         }
     }
 }
