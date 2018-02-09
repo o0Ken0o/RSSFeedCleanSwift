@@ -38,6 +38,7 @@ class LoginViewController: UIViewController {
         let presenter = LoginPresenter()
         let router = LoginRouter()
         
+        router.viewController = viewController
         viewController.router = router
         viewController.interactor = interactor
         interactor.presenter = presenter
@@ -109,7 +110,7 @@ class LoginViewController: UIViewController {
 extension LoginViewController: LoginDisplayLogic {
     func displayLogin(viewModel: Login.TryLogin.ViewModel) {
         if viewModel.isSuccessful {
-            print("Logging the user in")
+            router?.go2HomeViewController()
         } else {
             showAlertWith(title: "Error", message: viewModel.errorMsg)
         }
