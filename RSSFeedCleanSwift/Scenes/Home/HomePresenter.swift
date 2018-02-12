@@ -9,7 +9,8 @@
 import Foundation
 
 protocol HomePresentationLogic {
-    
+    func presentSongs(response: Home.FetchSongs.Response)
+    func presentFetchSongsError(errorMsg: String)
 }
 
 class HomePresenter {
@@ -17,5 +18,12 @@ class HomePresenter {
 }
 
 extension HomePresenter: HomePresentationLogic {
+    func presentSongs(response: Home.FetchSongs.Response) {
+        // case 1: there is no songs to display
+        // case 2: there are songs to display
+    }
     
+    func presentFetchSongsError(errorMsg: String) {
+        
+    }
 }

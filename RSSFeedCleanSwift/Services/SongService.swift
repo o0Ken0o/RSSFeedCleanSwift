@@ -10,11 +10,11 @@ import Foundation
 import Alamofire
 
 protocol SongServiceProtocol {
-    func fetchSongs(completion: @escaping (Bool, Home.FetchSongsResponse?, String?) -> Void)
+    func fetchSongs(completion: @escaping (Bool, Home.FetchSongs.Response?, String?) -> Void)
 }
 
 class SongService: SongServiceProtocol{
-    func fetchSongs(completion: @escaping (Bool, Home.FetchSongsResponse?, String?) -> Void) {
+    func fetchSongs(completion: @escaping (Bool, Home.FetchSongs.Response?, String?) -> Void) {
         let requestStr = "https://rss.itunes.apple.com/api/v1/hk/apple-music/hot-tracks/all/50/explicit.json"
         
         Alamofire.request(requestStr).responseJSON { (response) in
@@ -22,7 +22,7 @@ class SongService: SongServiceProtocol{
             case .success(_):
                 guard let data = response.data else {
                     DispatchQueue.main.async {
-                        let response = Home.FetchSongsResponse(feed: nil)
+                        let response = Home.FetchSongs.Response(feed: nil)
                         completion(true, response, nil)
                     }
                     return
@@ -30,7 +30,7 @@ class SongService: SongServiceProtocol{
                 
                 let decoder = JSONDecoder()
                 do {
-                    let fetchSongsResponse = try decoder.decode(Home.FetchSongsResponse.self, from: data)
+                    let fetchSongsResponse = try decoder.decode(Home.FetchSongs.Response.self, from: data)
                     DispatchQueue.main.async {
                         completion(true, fetchSongsResponse, nil)
                     }

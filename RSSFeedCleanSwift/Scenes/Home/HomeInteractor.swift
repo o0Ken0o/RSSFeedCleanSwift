@@ -20,11 +20,13 @@ class HomeInteractor {
 
 extension HomeInteractor: HomeBusinessLogic {
     func fetchSongs() {
-        songSerivce?.fetchSongs(completion: { (isSuccessful, customResponse, errorMsg) in
+        songSerivce?.fetchSongs(completion: { [unowned self] (isSuccessful, customResponse, errorMsg) in
             if isSuccessful {
-                print(customResponse)
+                guard let response = customResponse else { return }
+                self.presenter?.presentSongs(response: response)
             } else {
-                print(errorMsg ?? "default error msg")
+                guard let errorMsg = errorMsg else { return }
+                self.presenter?.presentFetchSongsError(errorMsg: errorMsg)
             }
         })
     }
