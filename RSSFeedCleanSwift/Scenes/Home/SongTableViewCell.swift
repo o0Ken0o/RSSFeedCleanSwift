@@ -40,10 +40,10 @@ class SongTableViewCell: UITableViewCell {
             make.right.equalToSuperview().offset(-10)
             make.height.equalTo(20)
         }
-        artistNameLabel.backgroundColor = .orange
+//        artistNameLabel.backgroundColor = .orange
     }
     
     func configureWith(thumbnail: String, name: String) {
-        
+        artistNameLabel.text = name
     }
 }

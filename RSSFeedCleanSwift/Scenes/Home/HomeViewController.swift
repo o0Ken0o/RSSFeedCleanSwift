@@ -17,6 +17,7 @@ protocol HomeDisplayLogic: class {
 class HomeViewController: UIViewController {
     var router: HomeRoutingLogic?
     var interactor: HomeBusinessLogic?
+    var displaySongs: [Home.FetchSongs.ViewModel.DisplaySong] = []
     var tableView = UITableView()
     
     override func viewDidLoad() {
@@ -57,7 +58,8 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeDisplayLogic {
     func displaySongs(viewModel: Home.FetchSongs.ViewModel) {
-        
+        displaySongs = viewModel.songs
+        tableView.reloadData()
     }
 }
 
@@ -67,11 +69,18 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return displaySongs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return SongTableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SongTableViewCell.identifier, for: indexPath) as? SongTableViewCell else {
+            return SongTableViewCell()
+        }
+        
+        let displaySong = displaySongs[indexPath.row]
+        cell.configureWith(thumbnail: displaySong.artworkUrl100, name: displaySong.artistName)
+        
+        return cell
     }
 }
 

@@ -13,9 +13,14 @@ protocol HomeBusinessLogic {
     func fetchSongs()
 }
 
+protocol HomeDataStore {
+    
+}
+
 class HomeInteractor {
     var presenter: HomePresentationLogic?
     var songSerivce: SongServiceProtocol?
+    var songs: [Song]?
 }
 
 extension HomeInteractor: HomeBusinessLogic {
@@ -23,6 +28,7 @@ extension HomeInteractor: HomeBusinessLogic {
         songSerivce?.fetchSongs(completion: { [unowned self] (isSuccessful, customResponse, errorMsg) in
             if isSuccessful {
                 guard let response = customResponse else { return }
+                self.songs = response.feed?.songs
                 self.presenter?.presentSongs(response: response)
             } else {
                 guard let errorMsg = errorMsg else { return }

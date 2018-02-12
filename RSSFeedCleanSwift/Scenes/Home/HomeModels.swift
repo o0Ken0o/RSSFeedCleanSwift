@@ -19,21 +19,21 @@ enum Home {
         }
         
         struct ViewModel {
-            let songs: [Song]
+            struct DisplaySong {
+                let artistName: String
+                let name: String
+                let collectionName: String
+                let artworkUrl100: String
+                let artistUrl: String
+            }
+            
+            let songs: [DisplaySong]
         }
         
         struct ErrorViewModel {
             let title: String
             let msg: String
             let errorImgName: String
-        }
-        
-        struct Song {
-            let artistName: String
-            let name: String
-            let collectionName: String
-            let artworkUrl100: String
-            let artistUrl: String
         }
     }
 }
