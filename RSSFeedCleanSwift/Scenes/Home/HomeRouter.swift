@@ -16,4 +16,8 @@ class HomeRouter {
     
 }
 
+extension HomeRouter: HomeRoutingLogic {
+    
+}
+
 

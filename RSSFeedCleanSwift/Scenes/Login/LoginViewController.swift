@@ -28,6 +28,10 @@ class LoginViewController: UIViewController {
         
         setupVIPChain()
         
+        // hard-code it
+        usernameTF.text = "ken.siu@accedo.tv"
+        passwordTF.text = "new"
+        
         addViewsToFormHierarchy()
         setupViews()
     }

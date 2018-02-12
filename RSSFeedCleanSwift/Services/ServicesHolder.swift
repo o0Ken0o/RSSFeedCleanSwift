@@ -10,4 +10,5 @@ import Foundation
 
 class ServicesHolder {
     static let accountService: AccountServiceProtocol = AccountService()
+    static let songService: SongServiceProtocol = SongService()
 }

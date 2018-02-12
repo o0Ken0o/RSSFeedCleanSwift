@@ -23,6 +23,8 @@ class HomeViewController: UIViewController {
         self.view.backgroundColor = .lightGray
         
         setupVIPChain()
+        
+        interactor?.fetchSongs()
     }
     
     func setupVIPChain() {
@@ -34,6 +36,7 @@ class HomeViewController: UIViewController {
         viewController.router = router
         viewController.interactor = interactor
         interactor.presenter = presenter
+        interactor.songSerivce = ServicesHolder.songService
         presenter.viewController = viewController
     }
 }
