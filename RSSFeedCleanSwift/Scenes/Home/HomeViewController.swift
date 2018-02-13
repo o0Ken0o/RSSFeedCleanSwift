@@ -10,7 +10,7 @@ import UIKit
 
 protocol HomeDisplayLogic: class {
     func displaySongs(viewModel: Home.FetchSongs.ViewModel)
-//    func displayErrorMsg()
+    func display(errorViewModel: Home.FetchSongs.ViewModel.Error)
     func displayEmptySongsList()
 }
 
@@ -19,7 +19,9 @@ class HomeViewController: UIViewController {
     var interactor: HomeBusinessLogic?
     var tableView = UITableView()
     var emptySongsListMsgView = UIScrollView()
-    var emptyViewTitle = UILabel()
+    var errorSongsListMsgView = UIScrollView()
+    var errorImgView = UIImageView()
+    var errorMsgLabel = UILabel()
     
     // This list is just for display only. It is different from the one in HomeInteractor
     var displaySongs: [Home.FetchSongs.ViewModel.DisplaySong] = []
@@ -54,10 +56,16 @@ class HomeViewController: UIViewController {
         tableView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        tableView.backgroundColor = .black
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(SongTableViewCell.self, forCellReuseIdentifier: SongTableViewCell.identifier)
         
+        setupEmptySongsListView()
+        setupErrorSongsListView()
+    }
+    
+    func setupEmptySongsListView() {
         self.view.addSubview(emptySongsListMsgView)
         emptySongsListMsgView.isHidden = true
         emptySongsListMsgView.snp.makeConstraints { (make) in
@@ -69,6 +77,7 @@ class HomeViewController: UIViewController {
             make.top.equalToSuperview().offset(height)
         }
         
+        let emptyViewTitle = UILabel()
         emptyViewTitle.backgroundColor = .clear
         emptySongsListMsgView.addSubview(emptyViewTitle)
         emptyViewTitle.text = "No songs available"
@@ -77,6 +86,33 @@ class HomeViewController: UIViewController {
         emptyViewTitle.backgroundColor = .white
         emptyViewTitle.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10)
+            make.left.equalTo(view).offset(10)
+            make.right.equalTo(view).offset(-10)
+        }
+    }
+    
+    func setupErrorSongsListView() {
+        self.view.addSubview(errorSongsListMsgView)
+        errorSongsListMsgView.isHidden = true
+        errorSongsListMsgView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            var height: CGFloat = 88
+            if let navBarHeight = self.navigationController?.navigationBar.frame.height {
+                height = navBarHeight + UIApplication.shared.statusBarFrame.height
+            }
+            make.top.equalToSuperview().offset(height)
+        }
+        
+        errorSongsListMsgView.addSubview(errorImgView)
+        errorImgView.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(60)
+            make.centerX.equalTo(view)
+            make.width.height.equalTo(100)
+        }
+        
+        errorSongsListMsgView.addSubview(errorMsgLabel)
+        errorMsgLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(errorImgView.snp.bottom).offset(10)
             make.left.equalTo(view).offset(10)
             make.right.equalTo(view).offset(-10)
         }
@@ -91,10 +127,24 @@ extension HomeViewController: HomeDisplayLogic {
     
     func displayEmptySongsList() {
         tableView.isHidden = true
-        
         emptySongsListMsgView.isHidden = false
+        errorSongsListMsgView.isHidden = true
+        
         emptySongsListMsgView.contentSize = emptySongsListMsgView.frame.size
         emptySongsListMsgView.alwaysBounceVertical = true
+    }
+    
+    func display(errorViewModel: Home.FetchSongs.ViewModel.Error) {
+        tableView.isHidden = true
+        emptySongsListMsgView.isHidden = true
+        errorSongsListMsgView.isHidden = false
+        
+        emptySongsListMsgView.contentSize = errorSongsListMsgView.frame.size
+        errorSongsListMsgView.alwaysBounceVertical = true
+        
+        errorImgView.image = UIImage(named: errorViewModel.errorImgName)
+        errorMsgLabel.text = errorViewModel.msg
+        errorMsgLabel.textAlignment = .center
     }
 }
 

@@ -38,7 +38,6 @@ extension HomeInteractor: HomeBusinessLogic {
                 guard let response = customResponse else { return }
                 self._songs = response.feed?.songs
                 self.presenter?.presentSongs(response: response)
-//                self.presenter?.presentSongs(response: Home.FetchSongs.Response(feed: nil))
             } else {
                 guard let errorMsg = errorMsg else { return }
                 self.presenter?.presentFetchSongsError(errorMsg: errorMsg)

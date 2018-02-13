@@ -28,12 +28,12 @@ enum Home {
             }
             
             let songs: [DisplaySong]
-        }
-        
-        struct ErrorViewModel {
-            let title: String
-            let msg: String
-            let errorImgName: String
+            
+            struct Error {
+                let title: String
+                let msg: String
+                let errorImgName: String
+            }
         }
     }
 }

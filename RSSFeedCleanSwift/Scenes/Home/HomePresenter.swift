@@ -38,6 +38,7 @@ extension HomePresenter: HomePresentationLogic {
     }
     
     func presentFetchSongsError(errorMsg: String) {
-        
+        let errorVM = Home.FetchSongs.ViewModel.Error(title: "Error", msg: "Please pull down to try again", errorImgName: "warning")
+        viewController?.display(errorViewModel: errorVM)
     }
 }

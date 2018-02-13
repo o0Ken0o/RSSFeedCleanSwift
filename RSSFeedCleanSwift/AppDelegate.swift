@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         let firstVC = LoginViewController()
         let navigationCtrl = UINavigationController(rootViewController: firstVC)
+        navigationCtrl.navigationBar.barStyle = .black
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationCtrl
