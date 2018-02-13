@@ -17,8 +17,10 @@ protocol HomeDisplayLogic: class {
 class HomeViewController: UIViewController {
     var router: HomeRoutingLogic?
     var interactor: HomeBusinessLogic?
-    var displaySongs: [Home.FetchSongs.ViewModel.DisplaySong] = []
     var tableView = UITableView()
+    
+    // This list is just for display only. It is different from the one in HomeInteractor
+    var displaySongs: [Home.FetchSongs.ViewModel.DisplaySong] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,7 +80,7 @@ extension HomeViewController: UITableViewDataSource {
         }
         
         let displaySong = displaySongs[indexPath.row]
-        cell.configureWith(thumbnail: displaySong.artworkUrl100, name: displaySong.artistName)
+        cell.configureWith(displaySong: displaySong)
         
         return cell
     }

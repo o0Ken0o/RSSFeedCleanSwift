@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import SDWebImage
 
 class SongTableViewCell: UITableViewCell {
     static let identifier = "SongTableViewCell"
     
-    let albumThumbnail = UIImageView()
-    let artistNameLabel = UILabel()
+    var albumThumbnail = UIImageView()
+    var artistNameLabel = UILabel()
+    var albumNameLabel = UILabel()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,6 +28,9 @@ class SongTableViewCell: UITableViewCell {
     func setupViews() {
         self.contentView.addSubview(albumThumbnail)
         self.contentView.addSubview(artistNameLabel)
+        self.contentView.addSubview(albumNameLabel)
+        
+        self.backgroundColor = .black
         
         albumThumbnail.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(10)
@@ -40,10 +45,22 @@ class SongTableViewCell: UITableViewCell {
             make.right.equalToSuperview().offset(-10)
             make.height.equalTo(20)
         }
-//        artistNameLabel.backgroundColor = .orange
+        artistNameLabel.textColor = .white
+        artistNameLabel.font = .systemFont(ofSize: 18)
+        
+        albumNameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(artistNameLabel.snp.bottom).offset(10)
+            make.left.right.equalTo(artistNameLabel)
+            make.bottom.equalToSuperview().offset(-5)
+        }
+        albumNameLabel.textColor = .lightGray
+        albumNameLabel.font = .systemFont(ofSize: 15)
     }
     
-    func configureWith(thumbnail: String, name: String) {
-        artistNameLabel.text = name
+    func configureWith(displaySong: Home.FetchSongs.ViewModel.DisplaySong) {
+        artistNameLabel.text = displaySong.artistName
+        albumNameLabel.text = displaySong.collectionName
+        guard let url = URL(string: displaySong.artworkUrl100) else { return }
+        albumThumbnail.sd_setImage(with: url, placeholderImage: UIImage(named: "album_placeholder"))
     }
 }

@@ -14,13 +14,21 @@ protocol HomeBusinessLogic {
 }
 
 protocol HomeDataStore {
-    
+    var songs: [Song]? { get }
 }
 
 class HomeInteractor {
     var presenter: HomePresentationLogic?
     var songSerivce: SongServiceProtocol?
-    var songs: [Song]?
+    var _songs: [Song]?
+}
+
+extension HomeInteractor: HomeDataStore {
+    // This list is a list of songs fetched from the server. It is subject to data formatting before display
+    // Also, individual elements can be passed as data to other scene (like detailed album)
+    var songs: [Song]? {
+        return _songs
+    }
 }
 
 extension HomeInteractor: HomeBusinessLogic {
@@ -28,7 +36,7 @@ extension HomeInteractor: HomeBusinessLogic {
         songSerivce?.fetchSongs(completion: { [unowned self] (isSuccessful, customResponse, errorMsg) in
             if isSuccessful {
                 guard let response = customResponse else { return }
-                self.songs = response.feed?.songs
+                self._songs = response.feed?.songs
                 self.presenter?.presentSongs(response: response)
             } else {
                 guard let errorMsg = errorMsg else { return }
