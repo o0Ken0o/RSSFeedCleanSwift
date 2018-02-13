@@ -23,6 +23,14 @@ class HomeViewController: UIViewController {
     var errorImgView = UIImageView()
     var errorMsgLabel = UILabel()
     
+    let refreshControlCreation: () -> UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        let attributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull down to reload", attributes: attributes)
+        refreshControl.addTarget(self, action: #selector(pullDownToRefresh(sender:)), for: .valueChanged)
+        return refreshControl
+    }
+    
     // This list is just for display only. It is different from the one in HomeInteractor
     var displaySongs: [Home.FetchSongs.ViewModel.DisplaySong] = []
     
@@ -61,6 +69,8 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.register(SongTableViewCell.self, forCellReuseIdentifier: SongTableViewCell.identifier)
         
+        tableView.refreshControl = refreshControlCreation()
+        
         setupEmptySongsListView()
         setupErrorSongsListView()
     }
@@ -76,6 +86,8 @@ class HomeViewController: UIViewController {
             }
             make.top.equalToSuperview().offset(height)
         }
+        
+        emptySongsListMsgView.refreshControl = refreshControlCreation()
         
         let emptyViewTitle = UILabel()
         emptyViewTitle.backgroundColor = .clear
@@ -103,6 +115,8 @@ class HomeViewController: UIViewController {
             make.top.equalToSuperview().offset(height)
         }
         
+        errorSongsListMsgView.refreshControl = refreshControlCreation()
+        
         errorSongsListMsgView.addSubview(errorImgView)
         errorImgView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(60)
@@ -115,6 +129,12 @@ class HomeViewController: UIViewController {
             make.top.equalTo(errorImgView.snp.bottom).offset(10)
             make.left.equalTo(view).offset(10)
             make.right.equalTo(view).offset(-10)
+        }
+    }
+    
+    @objc func pullDownToRefresh(sender: UIRefreshControl) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            sender.endRefreshing()
         }
     }
 }
