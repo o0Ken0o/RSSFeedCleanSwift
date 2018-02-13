@@ -20,9 +20,12 @@ class HomePresenter {
 extension HomePresenter: HomePresentationLogic {
     func presentSongs(response: Home.FetchSongs.Response) {
         // case 1: there is no songs to display
+        guard let rawSongs = response.feed?.songs else {
+            viewController?.displayEmptySongsList()
+            return
+        }
         
         // case 2: there are songs to display
-        guard let rawSongs = response.feed?.songs else { return }
         let songs = rawSongs.map{
             Home.FetchSongs.ViewModel.DisplaySong(artistName: $0.artistName,
                                  name: $0.name,

@@ -11,13 +11,15 @@ import UIKit
 protocol HomeDisplayLogic: class {
     func displaySongs(viewModel: Home.FetchSongs.ViewModel)
 //    func displayErrorMsg()
-//    func displayEmptySongsList()
+    func displayEmptySongsList()
 }
 
 class HomeViewController: UIViewController {
     var router: HomeRoutingLogic?
     var interactor: HomeBusinessLogic?
     var tableView = UITableView()
+    var emptySongsListMsgView = UIScrollView()
+    var emptyViewTitle = UILabel()
     
     // This list is just for display only. It is different from the one in HomeInteractor
     var displaySongs: [Home.FetchSongs.ViewModel.DisplaySong] = []
@@ -55,6 +57,29 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(SongTableViewCell.self, forCellReuseIdentifier: SongTableViewCell.identifier)
+        
+        self.view.addSubview(emptySongsListMsgView)
+        emptySongsListMsgView.isHidden = true
+        emptySongsListMsgView.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            var height: CGFloat = 88
+            if let navBarHeight = self.navigationController?.navigationBar.frame.height {
+                height = navBarHeight + UIApplication.shared.statusBarFrame.height
+            }
+            make.top.equalToSuperview().offset(height)
+        }
+        
+        emptyViewTitle.backgroundColor = .clear
+        emptySongsListMsgView.addSubview(emptyViewTitle)
+        emptyViewTitle.text = "No songs available"
+        emptyViewTitle.textAlignment = .center
+        emptyViewTitle.font = .boldSystemFont(ofSize: 18)
+        emptyViewTitle.backgroundColor = .white
+        emptyViewTitle.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(10)
+            make.left.equalTo(view).offset(10)
+            make.right.equalTo(view).offset(-10)
+        }
     }
 }
 
@@ -62,6 +87,14 @@ extension HomeViewController: HomeDisplayLogic {
     func displaySongs(viewModel: Home.FetchSongs.ViewModel) {
         displaySongs = viewModel.songs
         tableView.reloadData()
+    }
+    
+    func displayEmptySongsList() {
+        tableView.isHidden = true
+        
+        emptySongsListMsgView.isHidden = false
+        emptySongsListMsgView.contentSize = emptySongsListMsgView.frame.size
+        emptySongsListMsgView.alwaysBounceVertical = true
     }
 }
 
