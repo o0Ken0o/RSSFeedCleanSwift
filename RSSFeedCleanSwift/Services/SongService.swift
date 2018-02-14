@@ -13,7 +13,7 @@ protocol SongServiceProtocol {
     func fetchSongs(completion: @escaping (Bool, Home.FetchSongs.Response?, String?) -> Void)
 }
 
-class SongService: SongServiceProtocol{
+class SongService: SongServiceProtocol {
     func fetchSongs(completion: @escaping (Bool, Home.FetchSongs.Response?, String?) -> Void) {
         let requestStr = "https://rss.itunes.apple.com/api/v1/hk/apple-music/hot-tracks/all/50/explicit.json"
         

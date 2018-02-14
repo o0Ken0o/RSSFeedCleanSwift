@@ -26,6 +26,7 @@
 		05994346202DAB9F00CC314D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05994345202DAB9F00CC314D /* HomePresenter.swift */; };
 		05994348202DAD9A00CC314D /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05994347202DAD9A00CC314D /* HomeRouter.swift */; };
 		0599434A202DADD600CC314D /* HomeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05994349202DADD600CC314D /* HomeModels.swift */; };
+		05A9DE902032DE6800E4DE94 /* HomeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A9DE8F2032DE6800E4DE94 /* HomeInteractorTests.swift */; };
 		05D591CF203186D9002D32C7 /* SongService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D591CE203186D9002D32C7 /* SongService.swift */; };
 		05D591D220318D39002D32C7 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D591D120318D39002D32C7 /* Models.swift */; };
 		05D591D420319317002D32C7 /* SongTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D591D320319317002D32C7 /* SongTableViewCell.swift */; };
@@ -67,6 +68,7 @@
 		05994345202DAB9F00CC314D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		05994347202DAD9A00CC314D /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		05994349202DADD600CC314D /* HomeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModels.swift; sourceTree = "<group>"; };
+		05A9DE8F2032DE6800E4DE94 /* HomeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractorTests.swift; sourceTree = "<group>"; };
 		05D591CE203186D9002D32C7 /* SongService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongService.swift; sourceTree = "<group>"; };
 		05D591D120318D39002D32C7 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		05D591D320319317002D32C7 /* SongTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongTableViewCell.swift; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		05994338202D85E600CC314D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				05A9DE8F2032DE6800E4DE94 /* HomeInteractorTests.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				05994342202D9B2A00CC314D /* LoginViewControllerTest.swift in Sources */,
+				05A9DE902032DE6800E4DE94 /* HomeInteractorTests.swift in Sources */,
 				0599433A202D863B00CC314D /* LoginInteractorTest.swift in Sources */,
 				05994340202D95C600CC314D /* LoginPresenterTest.swift in Sources */,
 				0599430D202C586700CC314D /* RSSFeedCleanSwiftTests.swift in Sources */,
