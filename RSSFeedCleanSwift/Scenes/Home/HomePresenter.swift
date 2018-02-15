@@ -10,7 +10,6 @@ import Foundation
 
 protocol HomePresentationLogic {
     func presentSongs(response: Home.FetchSongs.Response)
-    func presentFetchSongsError(errorMsg: String)
 }
 
 class HomePresenter {
@@ -19,6 +18,13 @@ class HomePresenter {
 
 extension HomePresenter: HomePresentationLogic {
     func presentSongs(response: Home.FetchSongs.Response) {
+        let presentClosure = response.isSuccessful ? presentFetchedSongsSuccessfully : presentFetchedSongsError
+        presentClosure(response)
+    }
+    
+    private func presentFetchedSongsSuccessfully(response: Home.FetchSongs.Response) {
+        guard response.isSuccessful else { return }
+        
         // case 1: there is no songs to display
         guard let rawSongs = response.feed?.songs else {
             viewController?.displayEmptySongsList()
@@ -28,16 +34,26 @@ extension HomePresenter: HomePresentationLogic {
         // case 2: there are songs to display
         let songs = rawSongs.map{
             Home.FetchSongs.ViewModel.DisplaySong(artistName: $0.artistName,
-                                 name: $0.name,
-                                 collectionName: $0.collectionName,
-                                 artworkUrl100: $0.artworkUrl100 ?? "",
-                                 artistUrl: $0.artistUrl ?? "")
+                                                  name: $0.name,
+                                                  collectionName: $0.collectionName,
+                                                  artworkUrl100: $0.artworkUrl100 ?? "",
+                                                  artistUrl: $0.artistUrl ?? "")
         }
         let viewModel = Home.FetchSongs.ViewModel(songs: songs)
         viewController?.displaySongs(viewModel: viewModel)
     }
     
-    func presentFetchSongsError(errorMsg: String) {
+    func presentFetchedSongsError(response: Home.FetchSongs.Response) {
+        guard !response.isSuccessful else { return }
+        
+        // may try to parse the errorMsg and format it according to needs
+        switch response.errorMsg {
+        case nil:
+            break
+        default:
+            break
+        }
+        
         let errorVM = Home.FetchSongs.ViewModel.Error(title: "Error", msg: "Please pull down to try again", errorImgName: "warning")
         viewController?.display(errorViewModel: errorVM)
     }

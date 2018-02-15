@@ -33,15 +33,9 @@ extension HomeInteractor: HomeDataStore {
 
 extension HomeInteractor: HomeBusinessLogic {
     func fetchSongs() {
-        songSerivce?.fetchSongs(completion: { [unowned self] (isSuccessful, customResponse, errorMsg) in
-            if isSuccessful {
-                guard let response = customResponse else { return }
-                self._songs = response.feed?.songs
-                self.presenter?.presentSongs(response: response)
-            } else {
-                guard let errorMsg = errorMsg else { return }
-                self.presenter?.presentFetchSongsError(errorMsg: errorMsg)
-            }
+        songSerivce?.fetchSongs(completion: { [unowned self] (isSuccessful, fetchedSongs, errorMsg) in
+            let response = Home.FetchSongs.Response(feed: fetchedSongs?.feed, isSuccessful: isSuccessful, errorMsg: errorMsg)
+            self.presenter?.presentSongs(response: response)
         })
     }
 }

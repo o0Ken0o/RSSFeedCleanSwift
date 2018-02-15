@@ -10,11 +10,11 @@ import Foundation
 import Alamofire
 
 protocol SongServiceProtocol {
-    func fetchSongs(completion: @escaping (Bool, Home.FetchSongs.Response?, String?) -> Void)
+    func fetchSongs(completion: @escaping (Bool, FetchedSongs?, String?) -> Void)
 }
 
 class SongService: SongServiceProtocol {
-    func fetchSongs(completion: @escaping (Bool, Home.FetchSongs.Response?, String?) -> Void) {
+    func fetchSongs(completion: @escaping (Bool, FetchedSongs?, String?) -> Void) {
         let requestStr = "https://rss.itunes.apple.com/api/v1/hk/apple-music/hot-tracks/all/50/explicit.json"
         
         Alamofire.request(requestStr).responseJSON { (response) in
@@ -22,22 +22,22 @@ class SongService: SongServiceProtocol {
             case .success(_):
                 guard let data = response.data else {
                     DispatchQueue.main.async {
-                        let response = Home.FetchSongs.Response(feed: nil)
+                        let response = FetchedSongs(feed: nil)
                         completion(true, response, nil)
                     }
                     return
                 }
-                
+
                 let decoder = JSONDecoder()
                 do {
-                    let fetchSongsResponse = try decoder.decode(Home.FetchSongs.Response.self, from: data)
+                    let fetchSongsResponse = try decoder.decode(FetchedSongs.self, from: data)
                     DispatchQueue.main.async {
                         completion(true, fetchSongsResponse, nil)
                     }
                 } catch {
                     // log the error
                     print(error.localizedDescription)
-                    
+
                     let errorMsg = "Unknown error"
                     DispatchQueue.main.async {
                         completion(false, nil, errorMsg)

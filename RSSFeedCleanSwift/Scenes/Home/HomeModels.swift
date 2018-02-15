@@ -14,8 +14,10 @@ enum Home {
             
         }
         
-        struct Response: Decodable {
+        struct Response {
             let feed: RSSFeed?
+            let isSuccessful: Bool
+            let errorMsg: String?
         }
         
         struct ViewModel {

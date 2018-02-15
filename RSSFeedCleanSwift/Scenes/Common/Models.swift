@@ -7,6 +7,12 @@
 //
 
 import Foundation
+/**
+ all the structs in this file will be used for decoding data returned from the server
+ **/
+struct FetchedSongs: Decodable {
+    let feed: RSSFeed?
+}
 
 struct RSSFeed: Decodable {
     let title: String
