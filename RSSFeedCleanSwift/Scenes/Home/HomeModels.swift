@@ -14,10 +14,16 @@ enum Home {
             
         }
         
-        struct Response {
+        struct Response: Equatable {
             let feed: RSSFeed?
             let isSuccessful: Bool
             let errorMsg: String?
+            
+            static func == (lhs: Response, rhs: Response) -> Bool {
+                return lhs.feed == rhs.feed
+                    && lhs.isSuccessful == rhs.isSuccessful
+                    && lhs.errorMsg == rhs.errorMsg
+            }
         }
         
         struct ViewModel {

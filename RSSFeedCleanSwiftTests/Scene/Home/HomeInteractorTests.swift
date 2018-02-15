@@ -28,53 +28,66 @@ class HomeInteractorTests: XCTestCase {
         super.tearDown()
     }
     
-    func test_FetchSongs_ShouldCallPresentSongsOrPresentSongsError() {
+    func test_FetchSongs_ShouldCallPresenterToPresentSongs() {
         let presenter = HomePresentationLogicMock()
         let songService = SongServiceProtocolSpy()
         homeInteractor.presenter = presenter
         homeInteractor.songSerivce = songService
         
-        songService.isSuccessful = true
-        songService.response = Home.FetchSongs.Response(feed: nil)
         homeInteractor.fetchSongs()
-        XCTAssertTrue(presenter.verifyPresentFetchSongsIsCalled(), "Fetching songs successfully should call presentFetchSongs methods even no song returns")
+        XCTAssertTrue(presenter.verifyPresentSonsWasCalled(), "Fetching songs should call presenter to present songs")
+    }
+    
+    func test_FetchSongs_ShouldReturnTheResponse() {
+        // prepare
+        let presenter = HomePresentationLogicMock()
+        let songService = SongServiceProtocolSpy()
+        homeInteractor.presenter = presenter
+        homeInteractor.songSerivce = songService
         
-        songService.isSuccessful = true
         let song = Song(artistName: "", id: "", name: "", collectionName: "", artworkUrl100: "", artistUrl: "")
         let songs = [song, song, song]
-        songService.response = Home.FetchSongs.Response(feed: RSSFeed(title: "", id: "", songs: songs))
-        homeInteractor.fetchSongs()
-        XCTAssertTrue(presenter.verifyPresentFetchSongsIsCalled(), "Fetching songs successfully should call presentFetchSongs methods")
+        let feed = RSSFeed(title: "", id: "", songs: songs)
+        let fetchSongs = FetchedSongs(feed: feed)
+        let isSuccessful = true
+        let errorMsg = ""
         
-        songService.isSuccessful = false
-        songService.errorMsg = ""
+        songService.isSuccessful = isSuccessful
+        songService.fetchedSongs = fetchSongs
+        songService.errorMsg = errorMsg
+        
+        // when
         homeInteractor.fetchSongs()
-        XCTAssertTrue(presenter.verifyPresentFetchSongsErrorWasCalled(), "Having a failure during fetching songs should call presentFetchSongsError")
+        
+        // then
+        let expectedResponse = Home.FetchSongs.Response(feed: feed, isSuccessful: isSuccessful, errorMsg: errorMsg)
+        XCTAssertTrue(presenter.verifyWith(response: expectedResponse), "Fetching songs should return the response from the server")
     }
     
     func test_GetSongsShouldReturnUnformattedSongsForRouter() {
         let songService = SongServiceProtocolSpy()
         homeInteractor.songSerivce = songService
-        
-        XCTAssertNil(homeInteractor.songs)
-        
+
+        XCTAssertNil(homeInteractor.songs, "No songs should have been stored before fetching")
+
         songService.isSuccessful = true
         let song = Song(artistName: "", id: "", name: "", collectionName: "", artworkUrl100: "", artistUrl: "")
         let songs = [song, song, song]
-        songService.response = Home.FetchSongs.Response(feed: RSSFeed(title: "", id: "", songs: songs))
+        let fetchSongs = FetchedSongs(feed: RSSFeed(title: "", id: "", songs: songs))
+        songService.fetchedSongs = fetchSongs
         homeInteractor.fetchSongs()
-        
-        XCTAssertNotNil(homeInteractor.songs)
+
+        XCTAssertNotNil(homeInteractor.songs, "There should be a song stored after a successful fetch")
         XCTAssertEqual(homeInteractor.songs!, songs, "HomeIterator should return unformatted songs as a data store.")
     }
     
     class SongServiceProtocolSpy: SongServiceProtocol {
         var isSuccessful = true
-        var response: Home.FetchSongs.Response?
+        var fetchedSongs: FetchedSongs?
         var errorMsg: String?
         
-        func fetchSongs(completion: @escaping (Bool, Home.FetchSongs.Response?, String?) -> Void) {
-            completion(isSuccessful, response, errorMsg)
+        func fetchSongs(completion: @escaping (Bool, FetchedSongs?, String?) -> Void) {
+            completion(isSuccessful, fetchedSongs, errorMsg)
         }
     }
     
@@ -83,27 +96,20 @@ class HomeInteractorTests: XCTestCase {
     }
     
     class HomePresentationLogicMock: HomePresentationLogic {
-        private var presentFetchSongsErrorWasCalled = false
         private var presentSongsWasCalled = false
-        
-        func presentFetchSongsError(errorMsg: String) {
-            presentFetchSongsErrorWasCalled = true
-        }
+        private var home_FetchSongs_Response: Home.FetchSongs.Response!
         
         func presentSongs(response: Home.FetchSongs.Response) {
             presentSongsWasCalled = true
+            home_FetchSongs_Response = response
         }
         
-        func verifyPresentFetchSongsIsCalled() -> Bool {
+        func verifyPresentSonsWasCalled() -> Bool {
             return presentSongsWasCalled
         }
         
-        func verifyPresentFetchSongsErrorWasCalled() -> Bool {
-            return presentFetchSongsErrorWasCalled
-        }
-        
-        func verifyAtLeastOneFunctionIsCalled() -> Bool {
-            return presentSongsWasCalled || presentFetchSongsErrorWasCalled
+        func verifyWith(response: Home.FetchSongs.Response) -> Bool {
+            return home_FetchSongs_Response == response
         }
     }
     

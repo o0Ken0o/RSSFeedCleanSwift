@@ -14,7 +14,7 @@ struct FetchedSongs: Decodable {
     let feed: RSSFeed?
 }
 
-struct RSSFeed: Decodable {
+struct RSSFeed: Decodable, Equatable {
     let title: String
     let id: String
     let songs: [Song]
@@ -23,6 +23,12 @@ struct RSSFeed: Decodable {
         case title
         case id
         case songs = "results"
+    }
+    
+    static func == (lhs: RSSFeed, rhs: RSSFeed) -> Bool {
+        return lhs.title == rhs.title
+            && lhs.id == rhs.id
+            && lhs.songs == rhs.songs
     }
 }
 
