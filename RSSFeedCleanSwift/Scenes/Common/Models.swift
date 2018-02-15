@@ -53,3 +53,17 @@ struct Song: Decodable, Equatable {
             && lhs.artistUrl == rhs.artistUrl
     }
 }
+
+enum ApiError {
+    enum Title {
+        static let universial = "Error"
+    }
+    
+    enum Message {
+        static let pullDownToRefresh = "Please pull down to try again"
+    }
+    
+    enum ImgName {
+        static let warning = "warning"
+    }
+}

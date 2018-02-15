@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		053A7ADB2035494A00EC0905 /* HomePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053A7ADA2035494A00EC0905 /* HomePresenterTests.swift */; };
 		059942F8202C586700CC314D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059942F7202C586700CC314D /* AppDelegate.swift */; };
 		059942FF202C586700CC314D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 059942FE202C586700CC314D /* Assets.xcassets */; };
 		05994302202C586700CC314D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05994300202C586700CC314D /* LaunchScreen.storyboard */; };
-		0599430D202C586700CC314D /* RSSFeedCleanSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599430C202C586700CC314D /* RSSFeedCleanSwiftTests.swift */; };
 		05994328202D41AF00CC314D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05994327202D41AF00CC314D /* LoginViewController.swift */; };
 		0599432A202D41EA00CC314D /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05994329202D41EA00CC314D /* LoginInteractor.swift */; };
 		0599432C202D422500CC314D /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0599432B202D422500CC314D /* LoginPresenter.swift */; };
@@ -45,13 +45,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		053A7ADA2035494A00EC0905 /* HomePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenterTests.swift; sourceTree = "<group>"; };
 		059942F4202C586700CC314D /* RSSFeedCleanSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSFeedCleanSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		059942F7202C586700CC314D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		059942FE202C586700CC314D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05994301202C586700CC314D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		05994303202C586700CC314D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05994308202C586700CC314D /* RSSFeedCleanSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSFeedCleanSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0599430C202C586700CC314D /* RSSFeedCleanSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeedCleanSwiftTests.swift; sourceTree = "<group>"; };
 		0599430E202C586700CC314D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05994327202D41AF00CC314D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05994329202D41EA00CC314D /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
@@ -137,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				05994337202D85DE00CC314D /* Scene */,
-				0599430C202C586700CC314D /* RSSFeedCleanSwiftTests.swift */,
 				0599430E202C586700CC314D /* Info.plist */,
 			);
 			path = RSSFeedCleanSwiftTests;
@@ -211,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				05A9DE8F2032DE6800E4DE94 /* HomeInteractorTests.swift */,
+				053A7ADA2035494A00EC0905 /* HomePresenterTests.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -485,8 +485,8 @@
 				05994342202D9B2A00CC314D /* LoginViewControllerTest.swift in Sources */,
 				05A9DE902032DE6800E4DE94 /* HomeInteractorTests.swift in Sources */,
 				0599433A202D863B00CC314D /* LoginInteractorTest.swift in Sources */,
+				053A7ADB2035494A00EC0905 /* HomePresenterTests.swift in Sources */,
 				05994340202D95C600CC314D /* LoginPresenterTest.swift in Sources */,
-				0599430D202C586700CC314D /* RSSFeedCleanSwiftTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

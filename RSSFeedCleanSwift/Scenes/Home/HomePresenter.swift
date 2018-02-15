@@ -43,7 +43,7 @@ extension HomePresenter: HomePresentationLogic {
         viewController?.displaySongs(viewModel: viewModel)
     }
     
-    func presentFetchedSongsError(response: Home.FetchSongs.Response) {
+    private func presentFetchedSongsError(response: Home.FetchSongs.Response) {
         guard !response.isSuccessful else { return }
         
         // may try to parse the errorMsg and format it according to needs
@@ -54,7 +54,7 @@ extension HomePresenter: HomePresentationLogic {
             break
         }
         
-        let errorVM = Home.FetchSongs.ViewModel.Error(title: "Error", msg: "Please pull down to try again", errorImgName: "warning")
+        let errorVM = Home.FetchSongs.ViewModel.Error(title: ApiError.Title.universial, msg: ApiError.Message.pullDownToRefresh, errorImgName: ApiError.ImgName.warning)
         viewController?.display(errorViewModel: errorVM)
     }
 }
