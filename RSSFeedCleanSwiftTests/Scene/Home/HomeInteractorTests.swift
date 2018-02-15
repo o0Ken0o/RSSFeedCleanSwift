@@ -52,6 +52,22 @@ class HomeInteractorTests: XCTestCase {
         XCTAssertTrue(presenter.verifyPresentFetchSongsErrorWasCalled(), "Having a failure during fetching songs should call presentFetchSongsError")
     }
     
+    func test_GetSongsShouldReturnUnformattedSongsForRouter() {
+        let songService = SongServiceProtocolSpy()
+        homeInteractor.songSerivce = songService
+        
+        XCTAssertNil(homeInteractor.songs)
+        
+        songService.isSuccessful = true
+        let song = Song(artistName: "", id: "", name: "", collectionName: "", artworkUrl100: "", artistUrl: "")
+        let songs = [song, song, song]
+        songService.response = Home.FetchSongs.Response(feed: RSSFeed(title: "", id: "", songs: songs))
+        homeInteractor.fetchSongs()
+        
+        XCTAssertNotNil(homeInteractor.songs)
+        XCTAssertEqual(homeInteractor.songs!, songs, "HomeIterator should return unformatted songs as a data store.")
+    }
+    
     class SongServiceProtocolSpy: SongServiceProtocol {
         var isSuccessful = true
         var response: Home.FetchSongs.Response?
@@ -60,6 +76,10 @@ class HomeInteractorTests: XCTestCase {
         func fetchSongs(completion: @escaping (Bool, Home.FetchSongs.Response?, String?) -> Void) {
             completion(isSuccessful, response, errorMsg)
         }
+    }
+    
+    class HomeDataStoreMock: HomeDataStore {
+        var songs: [Song]?
     }
     
     class HomePresentationLogicMock: HomePresentationLogic {
