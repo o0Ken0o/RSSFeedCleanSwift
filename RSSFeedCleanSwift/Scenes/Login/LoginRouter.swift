@@ -19,6 +19,7 @@ class LoginRouter {
 extension LoginRouter: LoginRoutingLogic {
     func go2HomeViewController() {
         let homeVC = HomeViewController()
+        homeVC.configurator = HomeConfigurator()
         if let nav = viewController?.navigationController {
             nav.setViewControllers([homeVC], animated: true)
         } else {

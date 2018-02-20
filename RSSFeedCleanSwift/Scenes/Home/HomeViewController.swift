@@ -14,9 +14,19 @@ protocol HomeDisplayLogic: class {
     func displayEmptySongsList()
 }
 
+protocol HomeConfiguarable {
+    var router: HomeRoutingLogic? { get set }
+    var interactor: HomeBusinessLogic? { get set }
+    var configurator: HomeConfigurationDelegate? { get set }
+}
+
+extension HomeViewController: HomeConfiguarable {}
+
 class HomeViewController: UIViewController {
     var router: HomeRoutingLogic?
     var interactor: HomeBusinessLogic?
+    var configurator: HomeConfigurationDelegate?
+    
     var tableView = UITableView()
     var emptySongsListMsgView = UIScrollView()
     var errorSongsListMsgView = UIScrollView()
@@ -40,23 +50,10 @@ class HomeViewController: UIViewController {
         self.title = "Home"
         self.view.backgroundColor = .lightGray
         
-        setupVIPChain()
+        configurator?.configureWith(viewController: self)
         setupViews()
         
         interactor?.fetchSongs()
-    }
-    
-    func setupVIPChain() {
-        let viewController = self
-        let interactor = HomeInteractor()
-        let presenter = HomePresenter()
-        let router = HomeRouter()
-        
-        viewController.router = router
-        viewController.interactor = interactor
-        interactor.presenter = presenter
-        interactor.songSerivce = ServicesHolder.songService
-        presenter.viewController = viewController
     }
     
     func setupViews() {
